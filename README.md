@@ -1,6 +1,5 @@
-
 ## Build
-```bash
-$ androidjs b
-```
 
+```bash
+$ npm run build
+```
