@@ -13,7 +13,8 @@
     "main": "main.js",
     "scripts": {
         "start:dev": "node .",
-        "build": "androidjs build"
+        "build": "androidjs b -f",
+        "build:release": "androidjs b --release"
     },
     "author": "Joseph Abbey",
     "license": "ISC",
