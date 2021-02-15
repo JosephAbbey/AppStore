@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home</title>
+        <title>Apps</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <link rel="stylesheet" href="../assets/lib/bootstrap.min.css" />
@@ -16,17 +16,25 @@
     </head>
 
     <body>
-        <div class="container d-flex justify-content-center">
+        <div class="container h-100 d-flex justify-content-center">
             <div class="my-3 p-3 bg-body rounded shadow-sm w-100">
-                <h6 class="border-bottom pb-2 mb-0">Apps</h6>
+                <div id="top">
+                    <a style="position: fixed" href="./"
+                        ><span data-feather="x-square"></span
+                    ></a>
+                    <h6
+                        style="margin-top: 5px"
+                        class="border-bottom pb-2 mb-0 text-center"
+                    >
+                        Apps
+                    </h6>
+                </div>
                 <div id="apps"></div>
-                <small class="d-block text-end mt-3">
-                    <a href="./apps.html">All apps</a>
-                </small>
             </div>
         </div>
 
-        <script type="text/javascript" src="../assets/js/index.js"></script>
+        <script type="text/javascript" src="../assets/js/apps.js"></script>
+        <script src="../assets/js/common.js"></script>
         <script src="../assets/lib/jquery.slim.min.js"></script>
         <script src="../assets/lib/bootstrap.min.js"></script>
     </body>
