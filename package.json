@@ -1,0 +1,29 @@
+{
+    "version": "1.0.0",
+    "name": "appstore",
+    "app-name": "AppStore",
+    "package-name": "webview",
+    "project-type": "webview",
+    "icon": "./assets/icon/icon.png",
+    "dist-path": "./dist",
+    "permission": [
+        "android.permission.INTERNET"
+    ],
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "start:dev": "node .",
+        "build": "androidjs build"
+    },
+    "author": "Joseph Abbey",
+    "license": "ISC",
+    "dependencies": {
+        "androidjs": "^2.0.2",
+        "graphql": "^15.5.0",
+        "graphql-request": "^3.4.0"
+    },
+    "project-name": "AppStore",
+    "theme": {
+        "fullScreen": true
+    }
+}
