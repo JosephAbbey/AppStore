@@ -1,6 +1,5 @@
-front.send('hello from front');
+front.send('ready');
 
-front.on('hello from back', function (msg) {
-    console.log(msg);
+front.on('app', function (app) {
     $('#msg').html(msg);
 });
