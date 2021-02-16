@@ -55,7 +55,7 @@ back.on('install', function (url) {
     back.send('toast', { msg: `Downloading ${url}`, d: 0 });
     const file = fs.createWriteStream(`${path}/tmp.apk`);
     get(url, function (err, res) {
-        res.pipe(file);
+        res.body.pipe(file);
         back.send('toast', { msg: `Installing`, d: 0 });
         var out = spawnSync('pm', ['install', `${path}/tmp.apk`], {});
         console.log(out);
