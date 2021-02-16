@@ -56,10 +56,10 @@ back.on('install', function (url) {
     const file = fs.createWriteStream(`${path}/tmp.apk`);
     http.get(url, function (response) {
         response.pipe(file);
+        back.send('toast', { msg: `Installing`, d: 0 });
+        var out = spawnSync('pm', ['install', `${path}/tmp.apk`], {});
+        console.log(out);
+        back.send('toast', { msg: `Installed`, d: 0 });
+        // fs.rm(`${path}/tmp.apk`);
     });
-    back.send('toast', { msg: `Installing`, d: 0 });
-    var out = spawnSync('pm', ['install', `${path}/tmp.apk`], {});
-    console.log(out);
-    back.send('toast', { msg: `Installed`, d: 0 });
-    // fs.rm(`${path}/tmp.apk`);
 });
