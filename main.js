@@ -1,9 +1,14 @@
-const back = require('androidjs').back;
+const { back } = require('androidjs');
 const http = require('http');
 const { request, gql } = require('graphql-request');
+const fs = require('fs');
 const { spawn } = require('child_process');
 
 const addr = { registry: 'http://netley.ruins:5500' };
+var path;
+back.on('appData', function (s) {
+    path = s;
+});
 
 back.on('apps', function () {
     const query = gql`
@@ -48,14 +53,14 @@ back.on('get app', function (id) {
 
 back.on('install', function (url) {
     back.send('toast', { msg: `Downloading ${url}`, d: 1 });
-    const file = fs.createWriteStream('/tmp.apk');
+    const file = fs.createWriteStream(`${path}/tmp.apk`);
     http.get(url, function (response) {
         response.pipe(file);
     });
     back.send('toast', { msg: `Installing` });
-    spawn('java -jar /install.java', (e, stdout, stderr) => {
+    spawn('java -jar ./install.java', (e, stdout, stderr) => {
         console.log(e, stdout, stderr);
     });
     back.send('toast', { msg: `Installed` });
-    fs.rmSync('/tmp.apk');
+    fs.rmSync(`${path}/tmp.apk`);
 });

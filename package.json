@@ -2,7 +2,7 @@
     "version": "1.0.0",
     "name": "appstore",
     "app-name": "AppStore",
-    "package-name": "webview",
+    "package-name": "appstore",
     "project-type": "webview",
     "icon": "./assets/icon/icon.png",
     "dist-path": "./dist",
