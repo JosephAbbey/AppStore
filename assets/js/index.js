@@ -1,5 +1,10 @@
 front.send('apps');
 
+document.getElementById('apps').innerHTML += `
+    <p>
+        ${app.getPath('appData')}
+    </p>`;
+
 var appsShowing = 0;
 front.on('app', function (app) {
     if (appsShowing > 4) {

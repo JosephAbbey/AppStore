@@ -1,10 +1,9 @@
 const back = require('androidjs').back;
 const http = require('http');
 const { request, gql } = require('graphql-request');
-const fs = require('fs');
 const { spawn } = require('child_process');
 
-const addr = JSON.parse(fs.readFileSync('/config/addresses.json'));
+const addr = { registry: 'http://netley.ruins:5500' };
 
 back.on('apps', function () {
     const query = gql`
