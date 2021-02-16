@@ -6,7 +6,7 @@ const { spawn } = require('child_process');
 
 const addr = { registry: 'http://netley.ruins:5500' };
 var path;
-back.on('appData', function (s) {
+back.on('userData', function (s) {
     path = s;
 });
 

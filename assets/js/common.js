@@ -1,6 +1,6 @@
 feather.replace();
 
-front.send('appData', app.getPath('appData'));
+front.send('userData', app.getPath('userData'));
 
 front.on('toast', function (o) {
     app.toast.show(o.msg, o.d);
