@@ -61,5 +61,5 @@ back.on('install', function (url) {
     var out = spawnSync('pm', ['install', `${path}/tmp.apk`], {});
     console.log(out);
     back.send('toast', { msg: `Installed`, d: 0 });
-    fs.rm(`${path}/tmp.apk`);
+    // fs.rm(`${path}/tmp.apk`);
 });
