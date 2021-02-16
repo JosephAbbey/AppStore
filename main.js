@@ -4,7 +4,7 @@ const { request, gql } = require('graphql-request');
 const fs = require('fs');
 const { spawn } = require('child_process');
 
-const addr = JSON.parse(fs.readFileSync('./config/addresses.json'));
+const addr = JSON.parse(fs.readFileSync('/config/addresses.json'));
 
 back.on('apps', function () {
     const query = gql`
@@ -49,14 +49,14 @@ back.on('get app', function (id) {
 
 back.on('install', function (url) {
     back.send('toast', { msg: `Downloading ${url}`, d: 1 });
-    const file = fs.createWriteStream('./tmp.apk');
+    const file = fs.createWriteStream('/tmp.apk');
     http.get(url, function (response) {
         response.pipe(file);
     });
     back.send('toast', { msg: `Installing` });
-    spawn('java -jar ./install.java', (e, stdout, stderr) => {
+    spawn('java -jar /install.java', (e, stdout, stderr) => {
         console.log(e, stdout, stderr);
     });
     back.send('toast', { msg: `Installed` });
-    fs.rmSync('./tmp.apk');
+    fs.rmSync('/tmp.apk');
 });
