@@ -52,7 +52,7 @@ back.on('get app', function (id) {
 });
 
 back.on('install', function (url) {
-    back.send('toast', { msg: `Downloading ${url}`, d: 1 });
+    back.send('toast', { msg: `Downloading ${url}`, d: 0 });
     const file = fs.createWriteStream(`${path}/tmp.apk`);
     http.get(url, function (response) {
         response.pipe(file);
