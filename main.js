@@ -2,7 +2,7 @@ const { back } = require('androidjs');
 const http = require('http');
 const { request, gql } = require('graphql-request');
 const fs = require('fs');
-const { spawn } = require('child_process');
+const { spawnSync } = require('child_process');
 
 const addr = { registry: 'http://netley.ruins:5500' };
 var path;
@@ -58,9 +58,8 @@ back.on('install', function (url) {
         response.pipe(file);
     });
     back.send('toast', { msg: `Installing`, d: 0 });
-    spawn('java -jar ./install.java', (e, stdout, stderr) => {
-        console.log(e, stdout, stderr);
-    });
+    var out = spawnSync('java', ['./install.java'], {});
+    console.log(out);
     back.send('toast', { msg: `Installed`, d: 0 });
     fs.rmSync(`${path}/tmp.apk`);
 });
