@@ -5,6 +5,10 @@ const fs = require('fs');
 const { spawnSync } = require('child_process');
 
 const addr = { registry: 'http://netley.ruins:5500' };
+var path;
+back.on('userData', function (s) {
+    path = s;
+});
 
 back.on('apps', function () {
     const query = gql`
@@ -49,13 +53,13 @@ back.on('get app', function (id) {
 
 back.on('install', function (url) {
     back.send('toast', { msg: `Downloading ${url}`, d: 0 });
-    const file = fs.createWriteStream(`/data/local/tmp/tmp.apk`);
+    const file = fs.createWriteStream(`${path}/tmp.apk`);
     http.get(url, function (response) {
         response.pipe(file);
         back.send('toast', { msg: `Installing`, d: 0 });
-        var out = spawnSync('pm', ['install', `/data/local/tmp/tmp.apk`], {});
+        var out = spawnSync('pm', ['install', `${path}/tmp.apk`], {});
         console.log(out);
         back.send('toast', { msg: `Installed`, d: 0 });
-        // fs.rm(`/data/local/tmp/tmp.apk`);
+        // fs.rm(`${path}/tmp.apk`);
     });
 });
