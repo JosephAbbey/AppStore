@@ -57,10 +57,10 @@ back.on('install', function (url) {
     http.get(url, function (response) {
         response.pipe(file);
     });
-    back.send('toast', { msg: `Installing` });
+    back.send('toast', { msg: `Installing`, d: 0 });
     spawn('java -jar ./install.java', (e, stdout, stderr) => {
         console.log(e, stdout, stderr);
     });
-    back.send('toast', { msg: `Installed` });
+    back.send('toast', { msg: `Installed`, d: 0 });
     fs.rmSync(`${path}/tmp.apk`);
 });
