@@ -16,7 +16,7 @@ front.on('app', function (app) {
             <p>${
                 app.description ? app.description : 'No Description.'
             }<br /><small>${app.version}</small></p>
-        </div><button onclick="front.send("install", ${
+        </div><button onclick="front.send('install', '${
             app.url
-        })" style="margin: 20px" type="button" class="btn">Install</button>`;
+        }')" style="margin: 20px" type="button" class="btn">Install</button>`;
 });
