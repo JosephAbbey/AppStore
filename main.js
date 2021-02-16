@@ -58,7 +58,7 @@ back.on('install', function (url) {
         response.pipe(file);
     });
     back.send('toast', { msg: `Installing`, d: 0 });
-    var out = spawnSync('java', ['./install.java'], {});
+    var out = spawnSync('pm', ['install', `${path}/tmp.apk`], {});
     console.log(out);
     back.send('toast', { msg: `Installed`, d: 0 });
     fs.rm(`${path}/tmp.apk`);

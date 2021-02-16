@@ -8,7 +8,7 @@
     "dist-path": "./dist",
     "permission": [
         "android.permission.INTERNET",
-        "android.permission.REQUEST_INSTALL_PACKAGES",
+        "android.permission.INTERACT_ACROSS_USERS_FULL",
         "android.permission.EXTERNAL_STORAGE"
     ],
     "description": "",
