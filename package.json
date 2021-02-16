@@ -19,7 +19,7 @@
     "main": "main.js",
     "scripts": {
         "start:dev": "nodemon .",
-        "build": "androidjs b -f",
+        "build": "androidjs b",
         "build:release": "androidjs b --release"
     },
     "author": "Joseph Abbey",
