@@ -1,5 +1,5 @@
 const { back } = require('androidjs');
-const axios = require('axios');
+const http = require('http');
 const { request, gql } = require('graphql-request');
 const fs = require('fs');
 const { spawnSync } = require('child_process');
@@ -52,22 +52,18 @@ back.on('get app', function (id) {
 });
 
 back.on('install', function (url) {
+    var APKpath = `${path}/tmp.apk`;
     back.send('toast', { msg: `Downloading ${url}`, d: 0 });
-    axios
-        .request({
-            responseType: 'arraybuffer',
-            url,
-            method: 'get',
-            headers: {
-                'Content-Type': 'application/zip',
-            },
-        })
-        .then((result) => {
-            fs.writeFileSync(`${path}/tmp.apk`, result.data);
+    http.get(url, function (res) {
+        res.on('data', function (data) {
+            fs.appendFileSync(APKpath, data);
+        });
+        res.on('end', function () {
             back.send('toast', { msg: `Installing`, d: 0 });
-            var out = spawnSync('pm', ['install', `${path}/tmp.apk`], {});
+            var out = spawnSync('pm', ['install', APKpath], {});
             console.log(out);
             back.send('toast', { msg: `Installed`, d: 0 });
-            // fs.rm(`${path}/tmp.apk`);
+            // fs.rm(APKpath);
         });
+    });
 });
