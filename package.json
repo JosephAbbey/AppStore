@@ -8,7 +8,8 @@
     "dist-path": "./dist",
     "permission": [
         "android.permission.INTERNET",
-        "android.permission.REQUEST_INSTALL_PACKAGES"
+        "android.permission.REQUEST_INSTALL_PACKAGES",
+        "android.permission.EXTERNAL_STORAGE"
     ],
     "description": "",
     "main": "main.js",
